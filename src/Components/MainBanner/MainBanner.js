@@ -10,6 +10,7 @@ export function MainBanner() {
   const contentBtnsMainBanner = document.createElement('div');
   const linkInit = document.createElement('a');
   const linkEvents = document.createElement('a');
+  const user = localStorage.getItem('user');
 
   mainbanner.classList.add('flex', 'flex-col', 'items-center', 'gap-10', 'px-5', 'py-10', 'w-full', 'text-center');
   titlePage.classList.add('text-[30px]', 'md:text-[48px]');
@@ -26,7 +27,12 @@ export function MainBanner() {
   linkInit.addEventListener('click', (e) => navigate({ event: e, route: routes[1] }));
   linkEvents.addEventListener('click', (e) => navigate({ event: e, route: routes[0] }));
 
-  contentBtnsMainBanner.append(linkInit, linkEvents);
+  if (user) {
+    contentBtnsMainBanner.appendChild(linkEvents);
+  } else {
+    contentBtnsMainBanner.append(linkInit, linkEvents);
+  }
+
   mainbanner.append(titlePage, text, contentBtnsMainBanner);
   return mainbanner;
 }

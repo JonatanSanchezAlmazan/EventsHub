@@ -12,6 +12,8 @@ export async function API({ method = 'GET', isJson = false, endpoint, body }) {
     };
     console.log(options);
 
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
     const response = await fetch(`${import.meta.env.VITE_URL_BASE}/${endpoint}`, options);
     const res = await response.json();
     if (!response.ok) {

@@ -6,6 +6,7 @@ import { toggleAuthForm } from '../../Utils/toggleAuthForm';
 export function Auth() {
   const main = document.querySelector('#main');
   main.innerHTML = '';
+
   const auth = document.createElement('section');
   const contentForm = document.createElement('div');
   const contentButtons = document.createElement('div');
