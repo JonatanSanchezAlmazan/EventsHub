@@ -11,6 +11,14 @@ app.innerHTML = `
 Header();
 Home();
 
+const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+
+document.body.setAttribute('data-theme', systemTheme);
+
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+  document.body.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+});
+
 window.history.pushState('', '', '/');
 window.addEventListener('popstate', () => {
   const route = routes.find((route) => route.href === window.location.pathname);

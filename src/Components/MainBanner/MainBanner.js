@@ -16,8 +16,8 @@ export function MainBanner() {
   titlePage.classList.add('text-[30px]', 'md:text-[48px]');
   text.classList.add('text-[16px]', 'md:text-[20px]', 'max-w-[700px]', 'text-[#09090b]', 'dark:text-[#a1a1aa]');
   contentBtnsMainBanner.classList.add('flex', 'gap-10', 'items-center');
-  linkInit.classList.add('md:text-[14px]', 'text-[10px]', 'bg-[#895cd6]', 'dark:bg-[#fafafa]', 'px-8', 'py-2', 'text-[#000]', 'rounded-full', 'cursor-pointer', 'transition-colors', 'hover:bg-[#decff4]', 'dark:hover:bg-[#a1a1aa]');
-  linkEvents.classList.add('md:text-[14px]', 'text-[10px]', 'bg-[#fafafa]', 'dark:bg-[#09090b]', 'px-8', 'py-2', 'text-[#000]', 'dark:text-[#fff]', 'rounded-full', 'cursor-pointer', 'transition-colors', 'hover:bg-[#decff4]', 'dark:hover:bg-[#212123]', 'border', 'border-[#b5b5b5]');
+  linkInit.classList.add('md:text-[14px]', 'text-[10px]', 'bg-[#895cd6]', 'px-8', 'py-2', 'text-[#000]', 'rounded-full', 'cursor-pointer', 'transition-colors', 'hover:bg-[#9b7ec9]');
+  linkEvents.classList.add('md:text-[14px]', 'text-[10px]', 'bg-[#fafafa]', 'dark:bg-[#0f172a]', 'px-8', 'py-2', 'text-[#000]', 'dark:text-[#fff]', 'rounded-full', 'cursor-pointer', 'transition-colors', 'hover:bg-[#9b7ec9]', 'border', 'border-[#b5b5b5]');
 
   titlePage.textContent = 'Crea y Gestiona tus Eventos con Facilidad';
   text.textContent = 'La plataforma perfecta para organizar eventos, invitar asistentes y gestionar todo en su lugar.';

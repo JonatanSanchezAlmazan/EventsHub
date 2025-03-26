@@ -1,6 +1,6 @@
-export function hideAlertForm() {
+export function hideAlert() {
   const alert = document.querySelector('#alert');
   setTimeout(() => {
     alert.remove();
-  }, 2000);
+  }, 3000);
 }

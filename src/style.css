@@ -15,7 +15,7 @@
   --e-color5: #fafafa;
   --e-color6: #7f1d1d;
   --e-color7: #895cd6;
-  --e-color8: #decff4;
+  --e-color8: #9b7ec9;
 
   --e-spacingxs: 5px;
   --e-spacings: 10px;
@@ -30,7 +30,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0f172a;
-    --foreground: #ededed;
+    --foreground: #e6e6e6;
   }
 }
 
@@ -44,4 +44,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: 'Roboto', sans-serif;
+}
+
+/* En modo claro */
+body[data-theme='dark'] input:-webkit-autofill {
+  background-color: #0f172a !important;
+  -webkit-box-shadow: 0 0 0 1000px #0f172a inset !important;
+  -webkit-text-fill-color: white !important;
+}
+
+body[data-theme='light'] input:-webkit-autofill {
+  background-color: #ffff !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffff inset !important;
+  -webkit-text-fill-color: #040404 !important;
 }
