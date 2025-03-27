@@ -24,9 +24,9 @@ export function FormRegister() {
 
   form.classList.add('flex', 'flex-col', 'gap-5', 'p-5', 'border', 'rounded-lg', 'w-full', 'min-w-[300px]', 'max-w-[400px]');
   title.classList.add('text-[20px]', 'font-black');
-  text.classList.add('text-sm', 'text-black', 'dark:text-[#a1a1aa]');
-  btn.classList.add('text-[14px]', 'bg-[#895cd6]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[#9b7ec9]');
-  rol.classList.add('border', 'rounded-lg', 'p-2', 'text-xs', 'bg-white', 'dark:bg-[#0f172a]', 'text-black', 'dark:text-white', 'cursor-pointer', 'transition-colors', 'min-w-[120px]', 'max-w-[156px]', 'w-full');
+  text.classList.add('text-sm', 'text-black', 'dark:text-[var(--e-color3)]');
+  btn.classList.add('text-[14px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[var(--e-color2)]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
+  rol.classList.add('border', 'rounded-lg', 'p-2', 'text-xs', 'bg-white', 'dark:bg-[var(--e-color1)]', 'text-black', 'dark:text-white', 'cursor-pointer', 'transition-colors', 'min-w-[120px]', 'max-w-[156px]', 'w-full');
   contentRol.classList.add('flex', 'flex-col', 'gap-1', 'min-w-[120px]', 'max-w-[156px]', 'w-full');
   labelRol.classList.add('text-xs');
   btn.classList.add('text-xs');

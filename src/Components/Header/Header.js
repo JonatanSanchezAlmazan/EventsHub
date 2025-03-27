@@ -16,8 +16,8 @@ export function Header() {
 
   logo.classList.add('text-[20px]', 'cursor-pointer');
   linkEvents.classList.add('text-[14px]', 'cursor-pointer', 'hidden', 'md:flex', 'hover:text-[#895cd6]');
-  linkAuth.classList.add('text-[14px]', 'bg-[#895cd6]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'hidden', 'md:flex', 'transition-colors', 'hover:bg-[#9b7ec9]');
-  header.classList.add('flex', 'items-center', 'justify-between', 'p-5', 'bg-[#fafafa]', 'dark:bg-[#0f172a]', 'border-b', 'border-[#a1a1aa]', 'sticky', 'top-0');
+  linkAuth.classList.add('text-[14px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'hidden', 'md:flex', 'transition-colors', 'hover:bg-[var(--e-color8)]');
+  header.classList.add('flex', 'items-center', 'justify-between', 'p-5', 'bg-[var(--e-color5)]', 'dark:bg-[var(--e-color1)]', 'border-b', 'border-[var(--e-color3)]', 'sticky', 'top-0');
   nav.classList.add('flex', 'gap-20', 'items-center');
 
   if (user) {

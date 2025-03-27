@@ -13,8 +13,8 @@ export function FormLogin() {
 
   form.classList.add('flex', 'flex-col', 'gap-5', 'p-10', 'border', 'rounded-lg', 'w-full', 'min-w-[300px]', 'max-w-[400px]');
   title.classList.add('text-[20px]', 'font-black');
-  text.classList.add('text-sm', 'text-black', 'dark:text-[#a1a1aa]');
-  btn.classList.add('text-[14px]', 'bg-[#895cd6]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[#9b7ec9]');
+  text.classList.add('text-sm', 'text-black', 'dark:text-[var(--e-color3)]');
+  btn.classList.add('text-[14px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[var(--e-color2)]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
   btn.classList.add('text-xs');
 
   title.textContent = 'Iniciar Sesión';

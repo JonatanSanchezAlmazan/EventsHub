@@ -1,14 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 :root {
-  --e-color1: #111826;
+  --e-color1: #0f172a;
   --e-color2: #09090b;
   --e-color3: #a1a1aa;
   --e-color4: #212123;
@@ -16,6 +10,7 @@
   --e-color6: #7f1d1d;
   --e-color7: #895cd6;
   --e-color8: #9b7ec9;
+  --e-color9: #22055378;
 
   --e-spacingxs: 5px;
   --e-spacings: 10px;
@@ -38,6 +33,19 @@
   :root {
     --background: #ffff;
     --foreground: #040404;
+  }
+}
+
+@layer {
+  :root {
+    --e-color1: #111826;
+    --e-color2: #09090b;
+    --e-color3: #a1a1aa;
+    --e-color4: #212123;
+    --e-color5: #fafafa;
+    --e-color6: #7f1d1d;
+    --e-color7: #895cd6;
+    --e-color8: #9b7ec9;
   }
 }
 body {
