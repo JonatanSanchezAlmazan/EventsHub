@@ -7,7 +7,7 @@ export function FormRegister() {
   const text = document.createElement('p');
   const name = FieldForm({ typeInput: 'text', labelText: 'Nombre', ph: 'Nombre', id: 'name' });
   const firstName = FieldForm({ typeInput: 'text', labelText: 'Apellido', ph: 'Apellido', id: 'firstName' });
-  const email = FieldForm({ typeInput: 'email', labelText: 'Email', ph: 'dominio@dominio.com', id: 'email' });
+  const email = FieldForm({ typeInput: 'text', labelText: 'Email', ph: 'dominio@dominio.com', id: 'email' });
   const password = FieldForm({ typeInput: 'password', labelText: 'Contraseña', ph: '********', id: 'password' });
   const ubi = FieldForm({ typeInput: 'text', labelText: 'Ubicación', ph: 'Ubicación', id: 'ubi' });
   const contentRol = document.createElement('div');

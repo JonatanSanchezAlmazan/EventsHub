@@ -1,6 +1,7 @@
 export function hideAlert() {
   const alert = document.querySelector('#alert');
-  setTimeout(() => {
+
+  if (alert) {
     alert.remove();
-  }, 3000);
+  }
 }

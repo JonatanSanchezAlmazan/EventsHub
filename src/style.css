@@ -1,5 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import 'tailwindcss';
+
+@font-face {
+  font-family: 'MiFuente';
+  src: url('/fonts/Orbitron-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MiFuente';
+  src: url('/fonts/Orbitron-Extrabold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
 
 :root {
   --e-color1: #0f172a;
@@ -11,6 +23,7 @@
   --e-color7: #895cd6;
   --e-color8: #9b7ec9;
   --e-color9: #22055378;
+  --e-color10: #1e481e;
 
   --e-spacingxs: 5px;
   --e-spacings: 10px;
@@ -51,7 +64,24 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Roboto', sans-serif;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  font-family: 'MiFuente', 'Orbitron', 'sans-serif';
+}
+a,
+p,
+input,
+textarea,
+label,
+option,
+select {
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* En modo claro */

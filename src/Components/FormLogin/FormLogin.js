@@ -5,7 +5,7 @@ export function FormLogin() {
   const form = document.createElement('form');
   const title = document.createElement('h3');
   const text = document.createElement('p');
-  const email = FieldForm({ typeInput: 'email', labelText: 'Email', ph: 'dominio@dominio.com', id: 'email' });
+  const email = FieldForm({ typeInput: 'text', labelText: 'Email', ph: 'dominio@dominio.com', id: 'email' });
   const password = FieldForm({ typeInput: 'password', labelText: 'Contraseña', ph: '********', id: 'password' });
   const btn = document.createElement('button');
 

@@ -4,9 +4,9 @@ export function Alert({ message, isError = false, isSucces = false }) {
 
   alert.id = 'alert';
   if (isError) {
-    alert.classList.add('fixed', 'left-5', 'top-22', 'flex', 'items-center', 'justify-center', 'text-[12px]', 'w-full', 'text-white', 'bg-[#7f1d1d]', 'w-[300px]', 'rounded-md', 'h-[50px]', 'opacity-0', 'translate-x-[-50px]', 'transition-all', 'duration-500');
+    alert.classList.add('fixed', 'left-5', 'p-3', 'top-22', 'flex', 'items-center', 'justify-center', 'text-[12px]', 'w-full', 'text-white', 'bg-[var(--e-color6)]', 'w-[300px]', 'rounded-md', 'opacity-0', 'translate-x-[-50px]', 'transition-all', 'duration-500');
   } else if (isSucces) {
-    alert.classList.add('fixed', 'left-5', 'top-22', 'flex', 'items-center', 'justify-center', 'text-[12px]', 'w-full', 'text-white', 'bg-[#1e481e]', 'w-[300px]', 'rounded-md', 'h-[50px]', 'opacity-0', 'translate-x-[-50px]', 'transition-all', 'duration-500');
+    alert.classList.add('fixed', 'left-5', 'top-22', 'flex', 'items-center', 'justify-center', 'text-[12px]', 'w-full', 'text-white', 'bg-[var(--e-color10)]', 'w-[300px]', 'rounded-md', 'h-[50px]', 'opacity-0', 'translate-x-[-50px]', 'transition-all', 'duration-500');
   }
 
   textAletrt.textContent = message;
