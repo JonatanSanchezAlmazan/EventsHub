@@ -5,6 +5,7 @@ import { MenuMobile } from '../MenuMobile/MenuMobile';
 export function Header() {
   const header = document.querySelector('#header');
   header.innerHTML = '';
+  const containerHeader = document.createElement('div');
   const logo = document.createElement('h2');
   const nav = document.createElement('nav');
   const linkEvents = document.createElement('a');
@@ -19,10 +20,11 @@ export function Header() {
   logo.classList.add('text-[20px]', 'cursor-pointer');
   linkEvents.classList.add('text-[14px]', 'cursor-pointer', 'hidden', 'md:flex', 'hover:text-[#895cd6]');
   linkAuth.classList.add('text-[14px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'hidden', 'md:flex', 'transition-colors', 'hover:bg-[var(--e-color8)]');
-  header.classList.add('flex', 'items-center', 'justify-between', 'p-5', 'bg-[var(--e-color5)]', 'dark:bg-[var(--e-color1)]', 'border-b', 'border-[var(--e-color3)]', 'sticky', 'top-0');
+  header.classList.add('p-5', 'bg-[var(--e-color5)]', 'dark:bg-[var(--e-color1)]', 'border-b', 'border-[var(--e-color3)]', 'sticky', 'top-0');
   nav.classList.add('flex', 'gap-20', 'items-center');
   profile.classList.add('w-10', 'flex', 'dark:hidden', 'cursor-pointer');
   profileLight.classList.add('w-10', 'hidden', 'dark:flex', 'cursor-pointer');
+  containerHeader.classList.add('container', 'flex', 'items-center', 'justify-between');
 
   if (user) {
     profile.src = '/icons/usuario.png';
@@ -44,8 +46,9 @@ export function Header() {
   linkEvents.addEventListener('click', (e) => navigate({ event: e, route: routes[0] }));
 
   nav.append(linkEvents, linkAuth);
-  header.append(logo, nav, profile, profileLight);
-  MenuMobile({ parent: header });
+  containerHeader.append(logo, nav, profile, profileLight);
+  header.append(containerHeader);
+  MenuMobile({ parent: containerHeader });
 
   return header;
 }

@@ -6,7 +6,7 @@ export function ServiceCard({ src, title, text }) {
       <img class='object-container' src = "${src}" alt= 'icon'/>
     </div>
     <h3 class= 'text-[20px]'>${title}</h3>
-    <p class='text-[16px] text-[var(--e-color2)] dark:text-[var(--e-color3)] text-center'>${text}</p>
+    <p class='text-[16px] text-[var(--e-color2)] dark:text-[var(--e-color11)] text-center'>${text}</p>
   `;
 
   return card;
