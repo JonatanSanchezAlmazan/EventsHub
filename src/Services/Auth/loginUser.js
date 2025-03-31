@@ -32,9 +32,9 @@ export async function loginUser({ form, body = {} }) {
           window.location.reload();
         }, 2000);
       } catch (error) {
+        console.log(error);
         hideLoading();
-        showAlert({ message: error, isError: true });
-        hideAlert();
+        showAlert({ message: error, isError: true }); 
       }
     });
   } else {

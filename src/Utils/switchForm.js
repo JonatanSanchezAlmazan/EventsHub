@@ -1,4 +1,4 @@
-export function switchAuthForm({ btn1, btn2 }) {
+export function switchForm({ btn1, btn2 }) {
   btn1.addEventListener('click', () => {
     btn1.classList.replace('text-black', 'text-[#895cd6]');
     btn1.classList.replace('dark:text-[#a1a1aa]', 'dark:text-white');

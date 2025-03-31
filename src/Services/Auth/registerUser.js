@@ -43,7 +43,7 @@ export function registerUser({ form }) {
     } catch (error) {
       hideLoading();
       showAlert({ message: error, isError: true, parentElement: form });
-      hideAlert();
+     
     }
   });
 }

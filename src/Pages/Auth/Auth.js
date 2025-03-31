@@ -1,7 +1,10 @@
 import { FormLogin } from '../../Components/FormLogin/FormLogin';
+import { FormRegister } from '../../Components/FormRegister/FormRegister';
 import WelcomePanel from '../../Components/WelcomePanel/WelcomePanel';
-import { switchAuthForm } from '../../Utils/switchAuthForm';
-import { toggleAuthForm } from '../../Utils/toggleAuthForm';
+import { switchForm } from '../../Utils/switchForm';
+
+import { toggleForm } from '../../Utils/toggleForm';
+
 
 export function Auth() {
   const main = document.querySelector('#main');
@@ -19,7 +22,7 @@ export function Auth() {
   btnRegister.textContent = 'Registrarse';
 
   auth.classList.add('flex', 'flex-col');
-  contentForm.classList.add('flex', 'flex-col', 'justify-start', 'items-start', 'w-full', 'bg-green');
+  contentForm.classList.add('flex', 'flex-col', 'justify-start', 'items-start', 'w-full');
   contentButtons.classList.add('flex', 'justify-center', 'items-center', 'gap-5', 'p-1', 'rounded-lg', 'mb-2', 'border', 'border-[var(--e-color3)]', 'w-full', 'min-w-[300px]', 'max-w-[400px]');
   btnLogin.classList.add('w-44', 'py-2', 'text-[#895cd6]', 'dark:text-white', 'text-xs');
   btnRegister.classList.add('w-44', 'py-2', 'text-black', 'dark:text-[#a1a1aa]', 'text-xs');
@@ -31,6 +34,6 @@ export function Auth() {
   auth.append(containerAuth);
   main.append(auth);
 
-  switchAuthForm({ btn1: btnLogin, btn2: btnRegister });
-  toggleAuthForm({ btn1: btnLogin, btn2: btnRegister, contentForm });
+  switchForm({ btn1: btnLogin, btn2: btnRegister });
+  toggleForm({ btn1: btnLogin, btn2: btnRegister, id1:'formLogin', id2:'formRegister', content:contentForm, component1:FormLogin(), component2:FormRegister() });
 }
