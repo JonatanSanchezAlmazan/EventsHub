@@ -16,9 +16,9 @@ export function MainBanner() {
   titlePage.classList.add('text-[30px]', 'md:text-[48px]');
   text.classList.add('text-[16px]', 'md:text-[20px]', 'max-w-[700px]', 'text-[var(--e-color2)]', 'dark:text-[var(--e-color11)]');
   contentBtnsMainBanner.classList.add('flex', 'gap-10', 'items-center');
-  linkInit.classList.add('md:text-[14px]', 'text-[10px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-full', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
+  linkInit.classList.add('md:text-[12px]', 'text-[10px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-full', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
   linkEvents.classList.add(
-    'md:text-[14px]',
+    'md:text-[12px]',
     'text-[10px]',
     'bg-[var(--e-color5)]',
     'dark:bg-[var(--e-color1)]',

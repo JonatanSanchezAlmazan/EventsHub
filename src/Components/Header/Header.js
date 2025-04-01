@@ -18,8 +18,8 @@ export function Header() {
   linkEvents.textContent = 'Eventos';
 
   logo.classList.add('text-[20px]', 'cursor-pointer');
-  linkEvents.classList.add('text-[14px]', 'cursor-pointer', 'hidden', 'md:flex', 'hover:text-[#895cd6]');
-  linkAuth.classList.add('text-[14px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'hidden', 'md:flex', 'transition-colors', 'hover:bg-[var(--e-color8)]');
+  linkEvents.classList.add('text-[12px]', 'cursor-pointer', 'hidden', 'md:flex', 'hover:text-[#895cd6]');
+  linkAuth.classList.add('text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'hidden', 'md:flex', 'transition-colors', 'hover:bg-[var(--e-color8)]');
   header.classList.add('p-5', 'bg-[var(--e-color5)]', 'dark:bg-[var(--e-color1)]', 'border-b', 'border-[var(--e-color3)]', 'sticky', 'top-0');
   nav.classList.add('flex', 'gap-20', 'items-center');
   profile.classList.add('w-6', 'flex', 'dark:hidden', 'cursor-pointer');

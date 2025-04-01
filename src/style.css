@@ -34,7 +34,7 @@
     --e-color3: #2d2d2e;
     --e-color4: #212123;
     --e-color5: #fafafa;
-    --e-color6: #7f1d1d;
+    --e-color6: #912121;
     --e-color7: #895cd6;
     --e-color8: #9b7ec9;
     --e-color9: #22055378;
@@ -52,10 +52,11 @@ h3,
 h4,
 h5,
 h6,
-button {
+button,
+a {
   font-family: 'MiFuente', 'Orbitron', 'sans-serif';
 }
-a,
+
 p,
 input,
 textarea,
@@ -79,7 +80,7 @@ body[data-theme='light'] input:-webkit-autofill {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: auto;
   width: 100%;
   margin-right: auto;
