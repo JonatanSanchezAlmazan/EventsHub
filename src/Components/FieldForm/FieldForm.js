@@ -4,7 +4,7 @@ export function FieldForm({ typeInput = 'text', labelText, ph, id }) {
   const input = document.createElement('input');
 
   fieldForm.classList.add('flex', 'flex-col', 'gap-1', 'relative');
-  input.classList.add('border', 'border-[var(--e-color3)]', 'rounded-md', 'p-2', 'text-xs', 'dark:bg-[#0f172a]', 'bg-[#ffff]', 'focus:outline-none', 'dark:focus:bg-[#0f172a]', 'focus:bg-[#ffff]', 'min-w-[120px]', 'w-full');
+  input.classList.add('border', 'border-[var(--e-color3)]', 'rounded-md', 'p-2', 'text-xs', 'dark:bg-[var(--e-color1)]', 'bg-[var(--e-color5)]', 'focus:outline-none', 'dark:focus:bg-[#0f172a]', 'focus:bg-[#ffff]', 'min-w-[120px]', 'w-full');
   label.classList.add('text-xs');
   label.textContent = labelText;
   label.htmlFor = id;

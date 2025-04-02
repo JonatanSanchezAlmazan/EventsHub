@@ -11,7 +11,7 @@ export function DashboardAttendees(params) {
 
   content.id = 'myEventAttendees';
   header.classList.add('mt-[30px]');
-  contentEvents.classList.add('flex', 'gap-5', 'flex-wrap', 'p-5', 'justify-center');
+  contentEvents.classList.add('flex', 'gap-5', 'flex-wrap', 'p-5', 'justify-center','max-h-[500px]','overflow-y-auto');
 
   //!Meter los eventos a los que asisto
   events.forEach((event) => {

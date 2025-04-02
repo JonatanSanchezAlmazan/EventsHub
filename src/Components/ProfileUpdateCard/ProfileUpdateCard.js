@@ -6,7 +6,6 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import { FieldForm } from '../FieldForm/FieldForm';
-import { ProfileCard } from '../ProfileCard/ProfileCard';
 import { navigate } from '../../Utils/navigate';
 import { routes } from '../../Routes/routes';
 import { updateUser } from '../../Services/User/updateUser';

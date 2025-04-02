@@ -15,7 +15,7 @@ export function CardEvent({ event, isAdmin = false, parentelement, isEvent = fal
   const btnEdit = document.createElement('button');
   const btnRemove = document.createElement('button');
 
-  card.classList.add('min-w-[300px]', 'max-w-[400px]', 'w-full', 'border', 'p-5', 'border-[var(--e-color3)]', 'rounded-md', 'flex', 'flex-col', 'gap-5');
+  card.classList.add('min-w-[300px]', 'max-w-[380px]', 'w-full', 'border', 'p-5', 'border-[var(--e-color3)]', 'rounded-md', 'flex', 'flex-col', 'gap-5');
   name.classList.add('text-[14px]', 'font-bold');
   day.classList.add('text-[14px]');
   schedule.classList.add('text-[14px]');
@@ -27,7 +27,7 @@ export function CardEvent({ event, isAdmin = false, parentelement, isEvent = fal
   viewDetail.classList.add('text-[12px]', 'border', 'border-[var(--e-color3)]', 'p-2', 'rounded-md', 'cursor-pointer');
   btnEdit.classList.add('text-[12px]', 'border', 'border-[var(--e-color3)]', 'p-2', 'rounded-md');
   btnRemove.classList.add('text-[12px]', 'p-2', 'rounded-md', 'bg-[var(--e-color6)]', 'text-white');
-  contentImg.classList.add('w-full', 'h-[250px]');
+  contentImg.classList.add('w-full', 'h-[220px]');
   img.classList.add('rounded-md', 'object-cover', 'w-full', 'h-full');
 
   isEvent && category.classList.add('bg-[var(--e-color7)]');
