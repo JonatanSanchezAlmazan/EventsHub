@@ -37,9 +37,9 @@ export function CardEvent({ event, isAdmin = false, parentelement, isEvent = fal
   name.textContent = event.title;
   category.textContent = event.category;
   day.textContent = 'Día: ' + event.date;
-  schedule.textContent = 'Horario: ' + event.schedule;
-  direction.textContent = 'Dirección: ' + event.ubi;
-  numAttendees.textContent = 'Asistentes: ' + event.attendees.length + ' de ' + event.maxAttendes;
+  schedule.textContent = 'Empieza: ' + event.startTime + ' Acaba: ' + event.endTime;
+  direction.textContent = 'Dirección: ' + event.direction;
+  numAttendees.textContent = 'Asistentes: ' + event.attendees.length + ' de ' + event.capacity;
   viewDetail.text = 'Ver Detalle';
   btnEdit.textContent = 'Editar';
   btnRemove.textContent = 'Eliminar';

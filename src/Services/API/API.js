@@ -1,4 +1,4 @@
-import { showAlert } from "../../Utils/showAlert";
+import { showAlert } from '../../Utils/showAlert';
 
 export async function API({ method = 'GET', isJson = false, endpoint, body }) {
   try {
@@ -12,7 +12,6 @@ export async function API({ method = 'GET', isJson = false, endpoint, body }) {
       body: isJson ? JSON.stringify(body) : body,
       credentials: 'include'
     };
-    console.log(options);
 
     // await new Promise((resolve) => setTimeout(resolve, 1000));
 

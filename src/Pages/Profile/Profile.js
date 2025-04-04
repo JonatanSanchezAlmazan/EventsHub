@@ -10,8 +10,8 @@ export async function Profile(params) {
   const profileCard = await ProfileCard({ id: user._id });
   const profileDashboardEvents = ProfileDashboardEvents();
 
-  profile.classList.add('py-10', 'flex', 'justify-center','items-center');
-  containerProfile.classList.add('container','flex', 'flex-col','justify-center','items-center','gap-20', 'lg:flex-row', 'lg:items-start', 'lg:justify-start');
+  profile.classList.add('py-10', 'flex', 'justify-center', 'items-center');
+  containerProfile.classList.add('container', 'flex', 'flex-col', 'justify-center', 'items-center', 'gap-20', 'lg:flex-row', 'lg:items-start', 'lg:justify-start');
 
   containerProfile.append(profileCard, profileDashboardEvents);
   profile.append(containerProfile);
