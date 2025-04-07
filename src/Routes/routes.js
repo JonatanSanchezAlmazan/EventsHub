@@ -1,4 +1,5 @@
 import { Auth } from '../Pages/Auth/Auth';
+import { Event } from '../Pages/Event/Event';
 import { Events } from '../Pages/Events/Events';
 import { Home } from '../Pages/Home/Home';
 import { NewEvent } from '../Pages/NewEvent/NewEvent';
@@ -29,5 +30,10 @@ export const routes = [
     href: '/new/event',
     page: NewEvent,
     id: 'newEvent'
+  },
+  {
+    href: '/eventDetail',
+    page: Event,
+    id: 'eventDetail'
   }
 ];
