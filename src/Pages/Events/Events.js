@@ -1,6 +1,8 @@
 import { CardEvent } from '../../Components/CardEvent/CardEvent';
 import { Filter } from '../../Components/Filter/Filter';
+import { routes } from '../../Routes/routes';
 import { getEvents } from '../../Services/Event/getEvents';
+import { navigate } from '../../Utils/navigate';
 import { showAlert } from '../../Utils/showAlert';
 
 export async function Events(params) {

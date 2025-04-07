@@ -1,3 +1,7 @@
+import { Event } from '../../Pages/Event/Event';
+
+import { getEvent } from '../../Services/Event/getEvent';
+
 export function CardEvent({ event, isAdmin = false, parentelement, isEvent = false }) {
   const card = document.createElement('div');
   const contentImg = document.createElement('div');
@@ -53,6 +57,11 @@ export function CardEvent({ event, isAdmin = false, parentelement, isEvent = fal
   } else {
     card.append(contentImg, headercard, infoCard);
   }
+
+  card.addEventListener('click', async () => {
+    const ev = await getEvent({ id: event._id });
+    Event({ event: ev });
+  });
 
   parentelement.append(card);
 }
