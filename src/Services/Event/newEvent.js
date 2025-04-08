@@ -22,7 +22,17 @@ export function newEvent({ form, pond }) {
       return;
     }
 
-    console.log(image);
+    console.log(startTime.value);
+    const parsedStartTime = parseInt(startTime.value);
+    console.log(parsedStartTime);
+
+    if (parsedStartTime > 0 && parsedStartTime < 11) {
+      startTime.value = `${startTime.value} AM`;
+      console.log(startTime.value);
+    } else {
+      startTime.value = `${startTime.value} PM`;
+    }
+    console.log(startTime.value);
 
     const btnCancel = document.querySelector('#btnCancelNewEvent');
 

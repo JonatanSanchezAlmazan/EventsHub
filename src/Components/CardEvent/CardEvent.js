@@ -1,6 +1,8 @@
 import { Event } from '../../Pages/Event/Event';
+import { routes } from '../../Routes/routes';
 
 import { getEvent } from '../../Services/Event/getEvent';
+import { navigate } from '../../Utils/navigate';
 
 export function CardEvent({ event, isAdmin = false, parentelement, isEvent = false }) {
   const card = document.createElement('div');
@@ -58,9 +60,10 @@ export function CardEvent({ event, isAdmin = false, parentelement, isEvent = fal
     card.append(contentImg, headercard, infoCard);
   }
 
-  card.addEventListener('click', async () => {
-    const ev = await getEvent({ id: event._id });
-    Event({ event: ev });
+  card.addEventListener('click', (e) => {
+    localStorage.setItem('id', event._id);
+
+    navigate({ event: e, route: routes[5] });
   });
 
   parentelement.append(card);

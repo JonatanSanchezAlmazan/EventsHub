@@ -32,7 +32,7 @@ export const routes = [
     id: 'newEvent'
   },
   {
-    href: '/eventDetail',
+    href: `/detailEvent/${localStorage.getItem('id')}`,
     page: Event,
     id: 'eventDetail'
   }
