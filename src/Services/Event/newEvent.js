@@ -1,3 +1,5 @@
+import { changeDateFormat } from '../../Utils/changeDateFormat';
+import { formatTime } from '../../Utils/formatTime';
 import { hideLoading } from '../../Utils/hideLoading';
 import { showAlert } from '../../Utils/showAlert';
 import { showLoading } from '../../Utils/showLoading';
@@ -22,17 +24,8 @@ export function newEvent({ form, pond }) {
       return;
     }
 
-    console.log(startTime.value);
-    const parsedStartTime = parseInt(startTime.value);
-    console.log(parsedStartTime);
-
-    if (parsedStartTime > 0 && parsedStartTime < 11) {
-      startTime.value = `${startTime.value} AM`;
-      console.log(startTime.value);
-    } else {
-      startTime.value = `${startTime.value} PM`;
-    }
-    console.log(startTime.value);
+    const newDate = changeDateFormat(date.value);
+    const { newStartTime, newEndTime } = formatTime(startTime, endTime);
 
     const btnCancel = document.querySelector('#btnCancelNewEvent');
 
@@ -40,9 +33,9 @@ export function newEvent({ form, pond }) {
     formData.append('title', title.value);
     formData.append('description', description.value);
     formData.append('category', category.value);
-    formData.append('date', date.value);
-    formData.append('startTime', startTime.value);
-    formData.append('endTime', endTime.value);
+    formData.append('date', newDate);
+    formData.append('startTime', newStartTime);
+    formData.append('endTime', newEndTime);
     formData.append('direction', direction.value);
     formData.append('capacity', capacity.value);
     formData.append('image', image);
