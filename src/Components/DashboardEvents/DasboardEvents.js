@@ -1,15 +1,16 @@
-import { NewEvent } from '../../Pages/NewEvent/NewEvent';
 import { routes } from '../../Routes/routes';
-import { events } from '../../Utils/events';
+import { getEventsByAuthor } from '../../Services/Event/getEventsByAuthor';
 import { navigate } from '../../Utils/navigate';
 import { CardEvent } from '../CardEvent/CardEvent';
 
-export function DashboardEvents(params) {
+export async function DashboardEvents(params) {
   const content = document.createElement('div');
   const header = document.createElement('div');
   const title = document.createElement('h2');
   const btnCreateEvent = document.createElement('button');
   const contentEvents = document.createElement('div');
+  const user = JSON.parse(localStorage.getItem('user'));
+  const idAuthor = user._id
 
   title.textContent = 'Mis Eventos';
   btnCreateEvent.textContent = 'Crear Evento';
@@ -18,9 +19,13 @@ export function DashboardEvents(params) {
   btnCreateEvent.classList.add('text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
   contentEvents.classList.add('flex', 'gap-5', 'flex-wrap', 'p-5', 'justify-center', 'max-h-[500px]', 'overflow-y-auto', 'mt-10');
 
-  //!Meter mis eventos
-  events.forEach((event) => {
-    CardEvent({ event, parentelement: contentEvents, isAdmin: true });
+ 
+  const events = await getEventsByAuthor({idAuthor});
+  console.log(events);
+  
+  
+ events.forEach((event) => {
+    CardEvent({ event, parentelement: contentEvents, isAdmin: false });
   });
 
   header.append(title, btnCreateEvent);

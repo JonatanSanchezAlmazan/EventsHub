@@ -1,10 +1,9 @@
-import { Event } from '../../Pages/Event/Event';
 import { routes } from '../../Routes/routes';
-
-import { getEvent } from '../../Services/Event/getEvent';
 import { navigate } from '../../Utils/navigate';
 
-export function CardEvent({ event, isAdmin = false, parentelement, isEvent = false }) {
+export  function CardEvent({ event, isAdmin = false, parentelement, isEvent = false }) {
+  console.log(event);
+  
   const card = document.createElement('div');
   const contentImg = document.createElement('div');
   const img = document.createElement('img');
