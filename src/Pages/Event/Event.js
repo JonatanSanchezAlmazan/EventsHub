@@ -1,4 +1,5 @@
 import { routes } from '../../Routes/routes';
+import { toogleAttendee } from '../../Services/Attendees/toggleAttendee';
 
 import { getEvent } from '../../Services/Event/getEvent';
 import { navigate } from '../../Utils/navigate';
@@ -6,6 +7,8 @@ import { navigate } from '../../Utils/navigate';
 export async function Event() {
   const id = localStorage.getItem('id');
   const event = await getEvent({ id: id });
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log(user);
 
   const main = document.querySelector('#main');
   main.innerHTML = '';
@@ -30,7 +33,7 @@ export async function Event() {
   progressBar.classList.add('w-full', 'rounded-full', 'h-[20px]', 'border', 'border-[var(--e-color3)]');
   filled.classList.add('h-full', 'bg-[var(--e-color7)]', 'rounded-l-full');
   listAttendees.classList.add('w-[300px]', 'h-[200px]', 'gap-5', 'flex', 'flex-col', 'border', 'border-[var(--e-color3)]', 'p-2', 'rounded-md');
-  btnAssist.classList.add('text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'hidden', 'md:flex', 'transition-colors', 'hover:bg-[var(--e-color8)]', 'w-[100px]');
+  btnAssist.classList.add('text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]', 'text-center');
 
   const places = event.capacity - event.attendees.length;
   textPlaces.textContent = 'Plazas disponibles';
@@ -103,9 +106,18 @@ export async function Event() {
   content.append(contentEvents, contentAttendees);
   main.append(content);
 
+  for (const attendee of event.attendees) {
+    if (attendee._id === user._id) {
+      btnAssist.textContent = 'Dejar de asistir';
+    }
+  }
+
   const btnBack = document.querySelector('#btnBack');
   btnBack.addEventListener('click', (e) => {
     navigate({ event: e, route: routes[0] });
+  });
+  btnAssist.addEventListener('click', async () => {
+    await toogleAttendee({ userId: user._id, eventId: event._id, btn: btnBack });
   });
 
   const percentage = (event.attendees.length / event.capacity) * 100;
