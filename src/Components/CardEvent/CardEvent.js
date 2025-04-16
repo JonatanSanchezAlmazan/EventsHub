@@ -1,9 +1,7 @@
 import { routes } from '../../Routes/routes';
 import { navigate } from '../../Utils/navigate';
 
-export  function CardEvent({ event, isAdmin = false, parentelement, isEvent = false }) {
-  console.log(event);
-  
+export function CardEvent({ event, isAdmin = false, parentelement, isEvent = false }) {
   const card = document.createElement('div');
   const contentImg = document.createElement('div');
   const img = document.createElement('img');

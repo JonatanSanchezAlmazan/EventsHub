@@ -1,18 +1,24 @@
+import { getEventAttendee } from '../../Services/Event/getEventsAttendee';
+import { getEventsByAuthor } from '../../Services/Event/getEventsByAuthor';
 import { switchForm } from '../../Utils/switchForm';
 import { toggleForm } from '../../Utils/toggleForm';
 import { DashboardAttendees } from '../DashboardAttendees.js/DashboardAttendees';
 import { DashboardEvents } from '../DashboardEvents/DasboardEvents';
 
-export function ProfileDashboardEvents(params) {
+export async function ProfileDashboardEvents(params) {
   const content = document.createElement('section');
   const contentButtons = document.createElement('div');
   const btnMyEvents = document.createElement('button');
   const btnEventAttendes = document.createElement('button');
   const contentEvents = document.createElement('div');
   const contentEventAttendees = document.createElement('div');
-  const dashboardEvents = DashboardEvents();
-  const dashboardAttendees = DashboardAttendees();
   const user = JSON.parse(localStorage.getItem('user'));
+  const idAuthor = user._id;
+  const events = await getEventsByAuthor({ idAuthor });
+  const eventsAttendee = await getEventAttendee({ idUser: idAuthor });
+
+  const dashboardEvents = await DashboardEvents({ events });
+  const dashboardAttendees = await DashboardAttendees({ events: eventsAttendee });
 
   if (user.rol === 'owner') {
     btnMyEvents.textContent = 'Mis Eventos';
@@ -30,7 +36,7 @@ export function ProfileDashboardEvents(params) {
     content.append(contentButtons, contentEvents);
 
     switchForm({ btn1: btnMyEvents, btn2: btnEventAttendes });
-    toggleForm({ btn1: btnMyEvents, btn2: btnEventAttendes, content: content, id1: 'myEvents', id2: 'myEventAttendees', component1: DashboardEvents(), component2: DashboardAttendees() });
+    toggleForm({ btn1: btnMyEvents, btn2: btnEventAttendes, content: content, id1: 'myEvents', id2: 'myEventAttendees', component1: dashboardEvents, component2: dashboardAttendees });
   } else {
     contentButtons.append(btnEventAttendes);
     contentEventAttendees.append(dashboardAttendees);

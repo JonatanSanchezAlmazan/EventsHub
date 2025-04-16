@@ -5,8 +5,14 @@ import { getEvent } from '../../Services/Event/getEvent';
 import { navigate } from '../../Utils/navigate';
 
 export async function Event() {
+  console.log('entrando');
+
   const id = localStorage.getItem('id');
+  console.log(id);
+
   const event = await getEvent({ id: id });
+  console.log(event);
+
   const user = JSON.parse(localStorage.getItem('user'));
   console.log(user);
 
