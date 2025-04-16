@@ -8,7 +8,7 @@ export async function Profile(params) {
   const containerProfile = document.createElement('div');
   const user = JSON.parse(localStorage.getItem('user'));
   const profileCard = await ProfileCard({ id: user._id });
-  const profileDashboardEvents = ProfileDashboardEvents();
+  const profileDashboardEvents = await ProfileDashboardEvents();
 
   profile.classList.add('py-10', 'flex', 'justify-center', 'items-center');
   containerProfile.classList.add('container', 'flex', 'flex-col', 'justify-center', 'items-center', 'gap-20', 'lg:flex-row', 'lg:items-start', 'lg:justify-start');
