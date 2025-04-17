@@ -4,6 +4,7 @@ import { Events } from '../Pages/Events/Events';
 import { Home } from '../Pages/Home/Home';
 import { NewEvent } from '../Pages/NewEvent/NewEvent';
 import { Profile } from '../Pages/Profile/Profile';
+import { UpdateEvent } from '../Pages/UpdateEvent/UpdateEvent';
 
 export const routes = [
   {
@@ -35,5 +36,10 @@ export const routes = [
     href: `/detailEvent/${localStorage.getItem('id')}`,
     page: Event,
     id: 'eventDetail'
+  },
+  {
+    href: `/updateEvent/${localStorage.getItem('id')}`,
+    page: UpdateEvent,
+    id: 'updateEvent'
   }
 ];

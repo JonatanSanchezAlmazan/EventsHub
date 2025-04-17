@@ -1,3 +1,4 @@
+import { deleteUser } from '../../Services/User/deleteUser';
 import { getUser } from '../../Services/User/userProfile';
 import { ProfileCardUpdate } from '../ProfileUpdateCard/ProfileUpdateCard';
 
@@ -22,6 +23,7 @@ export async function ProfileCard({ id }) {
   const imgUbi = document.createElement('img');
   const imgUbiWhite = document.createElement('img');
   const ubiUser = document.createElement('p');
+  const btnDelete = document.createElement('button');
 
   sectionInfo.append(contentDescription, contentUbi);
   contentDescription.append(imgUser, imgUserWhite, descriptionUser);
@@ -44,6 +46,7 @@ export async function ProfileCard({ id }) {
   img.id = 'settings';
   imgLight.id = 'settingsWhite';
   contentProfile.id = 'containerProfile';
+  btnDelete.textContent = 'Eliminar cuenta';
 
   headerProfile.classList.add('flex', 'justify-between', 'items-center');
   contentProfile.classList.add('flex', 'flex-col', 'gap-10', 'min-w-[300px]', 'max-w-[400px]', 'w-full', 'border', 'border-[var(--e-color3)]', 'p-5', 'rounded-md');
@@ -62,18 +65,20 @@ export async function ProfileCard({ id }) {
   contentUbi.classList.add('flex', 'gap-1', 'items-center');
   ubiUser.classList.add('text-[14px]');
   sectionInfo.classList.add('flex', 'flex-col', 'gap-2');
+  btnDelete.classList.add('text-[12px]', 'p-2', 'rounded-md', 'bg-[var(--e-color6)]', 'text-white');
 
   headerProfile.append(title, img, imgLight);
   sectionImage.append(imageProfile, nameUser, emailUser);
   sectionInfo.append(contentDescription, contentUbi);
   contentDescription.append(imgUser, imgUserWhite, descriptionUser);
   contentUbi.append(imgUbi, imgUbiWhite, ubiUser);
-  contentProfile.append(headerProfile, sectionImage, sectionInfo);
+  contentProfile.append(headerProfile, sectionImage, sectionInfo, btnDelete);
 
   imgLight.addEventListener('click', () => {
     imgLight.remove();
     sectionImage.remove();
     sectionInfo.remove();
+    btnDelete.remove();
     const profileUpdateCard = ProfileCardUpdate({ user });
     contentProfile.append(profileUpdateCard);
   });
@@ -82,8 +87,13 @@ export async function ProfileCard({ id }) {
     img.remove();
     sectionImage.remove();
     sectionInfo.remove();
+    btnDelete.remove();
     const profileUpdateCard = ProfileCardUpdate({ user });
     contentProfile.append(profileUpdateCard);
+  });
+
+  btnDelete.addEventListener('click', (e) => {
+    deleteUser({ id: user._id, event: e });
   });
 
   return contentProfile;

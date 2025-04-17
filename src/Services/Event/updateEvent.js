@@ -6,7 +6,7 @@ import { showAlert } from '../../Utils/showAlert';
 import { showLoading } from '../../Utils/showLoading';
 import { API } from '../API/API';
 
-export function newEvent({ form, pond }) {
+export function updateEvent({ form, pond, id }) {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -25,30 +25,27 @@ export function newEvent({ form, pond }) {
       image = files[0].file;
     }
 
-    if ((!image && title.value == '' && description.value == '' && category.value == '' && date.value == '' && startTime.value === '', endTime.value === '' && direction.value === '' && capacity.value === '')) {
-      showAlert({ message: 'Todos los campos son obligatorios', isError: true });
-      return;
-    }
-
     const newDate = changeDateFormat(date.value);
     const { newStartTime, newEndTime } = formatTime(startTime, endTime);
 
-    const btnCancel = document.querySelector('#btnCancelNewEvent');
+    const btnCancel = document.querySelector('#btnCancelUpdate');
 
     const formData = new FormData();
-    formData.append('title', title.value);
-    formData.append('description', description.value);
-    formData.append('category', category.value);
-    formData.append('date', newDate);
-    formData.append('startTime', newStartTime);
-    formData.append('endTime', newEndTime);
-    formData.append('direction', direction.value);
-    formData.append('capacity', capacity.value);
-    formData.append('image', image);
+    if (title.value) formData.append('title', title.value);
+    if (description.value) formData.append('description', description.value);
+    if (category.value) formData.append('category', category.value);
+    if (date.value) formData.append('date', newDate);
+    if (startTime.value && endTime.value) {
+      formData.append('startTime', newStartTime);
+      formData.append('endTime', newEndTime);
+    }
+    if (direction.value) formData.append('direction', direction.value);
+    if (capacity.value) formData.append('capacity', capacity.value);
+    if (image) formData.append('image', image);
 
     try {
       showLoading();
-      const response = await API({ method: 'POST', endpoint: 'events/register', body: formData });
+      const response = await API({ method: 'PUT', endpoint: `events/${id}`, body: formData });
       hideLoading();
       showAlert({ message: response.message, isSucces: true });
       btnCancel.click();

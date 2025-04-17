@@ -1,4 +1,5 @@
 import { routes } from '../../Routes/routes';
+import { deleteEvent } from '../../Services/Event/deleteEvent';
 import { navigate } from '../../Utils/navigate';
 
 export function CardEvent({ event, isAdmin = false, parentelement, isEvent = false }) {
@@ -18,8 +19,11 @@ export function CardEvent({ event, isAdmin = false, parentelement, isEvent = fal
   const btnEdit = document.createElement('button');
   const btnRemove = document.createElement('button');
 
-  card.classList.add('min-w-[300px]', 'max-w-[380px]', 'w-full', 'border', 'p-5', 'border-[var(--e-color3)]', 'rounded-md', 'flex', 'flex-col', 'gap-5');
-  name.classList.add('text-[14px]', 'font-bold');
+  if (isAdmin) {
+    card.classList.add('h-[500px]');
+  }
+  card.classList.add('min-w-[300px]', 'max-w-[380px]', 'h-[450px]', 'w-full', 'border', 'p-5', 'border-[var(--e-color3)]', 'rounded-md', 'flex', 'flex-col', 'gap-5', 'justify-between');
+  name.classList.add('text-[14px]', 'font-bold', 'max-w-[250px]');
   day.classList.add('text-[14px]');
   schedule.classList.add('text-[14px]');
   direction.classList.add('text-[14px]');
@@ -57,10 +61,26 @@ export function CardEvent({ event, isAdmin = false, parentelement, isEvent = fal
     card.append(contentImg, headercard, infoCard);
   }
 
-  card.addEventListener('click', (e) => {
+  if (!isAdmin) {
+    card.addEventListener('click', (e) => {
+      localStorage.setItem('id', event._id);
+
+      navigate({ event: e, route: routes[5] });
+    });
+  }
+
+  viewDetail.addEventListener('click', (e) => {
     localStorage.setItem('id', event._id);
 
     navigate({ event: e, route: routes[5] });
+  });
+
+  btnEdit.addEventListener('click', (e) => {
+    localStorage.setItem('id', event._id);
+    navigate({ event: e, route: routes[6] });
+  });
+  btnRemove.addEventListener('click', (e) => {
+    deleteEvent({ id: event._id, event: e });
   });
 
   parentelement.append(card);

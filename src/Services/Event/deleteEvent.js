@@ -5,17 +5,13 @@ import { showAlert } from '../../Utils/showAlert';
 import { showLoading } from '../../Utils/showLoading';
 import { API } from '../API/API';
 
-export async function toogleAttendee({ userId, eventId, event }) {
+export async function deleteEvent({ id, event }) {
   try {
-    const body = {
-      userId,
-      eventId
-    };
     showLoading();
-    const response = await API({ method: 'PUT', body, isJson: true, endpoint: 'events/toggleAttendee' });
+    const response = await API({ method: 'DELETE', endpoint: `events/${id}` });
     hideLoading();
     showAlert({ message: response.message, isSucces: true });
-    navigate({ event, route: routes[5] });
+    navigate({ event, route: routes[3] });
   } catch (error) {
     hideLoading();
     showAlert({ message: error, isError: true });

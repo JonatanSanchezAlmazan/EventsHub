@@ -1,8 +1,6 @@
 import { CardEvent } from '../CardEvent/CardEvent';
 
 export async function DashboardAttendees({ events }) {
-  console.log(events);
-
   const content = document.createElement('div');
   const header = document.createElement('div');
   const title = document.createElement('h2');
@@ -12,7 +10,7 @@ export async function DashboardAttendees({ events }) {
 
   content.id = 'myEventAttendees';
   header.classList.add('mt-[30px]');
-  contentEvents.classList.add('flex', 'gap-5', 'flex-wrap', 'p-5', 'justify-center', 'max-h-[500px]', 'overflow-y-auto', 'mt-10');
+  contentEvents.classList.add('flex', 'gap-5', 'flex-wrap', 'p-5', 'justify-center', 'max-h-[600px]', 'overflow-y-auto', 'mt-10');
 
   events.forEach((event) => {
     CardEvent({ event, parentelement: contentEvents, isAdmin: false });

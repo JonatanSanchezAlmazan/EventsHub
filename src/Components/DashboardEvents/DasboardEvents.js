@@ -15,7 +15,6 @@ export async function DashboardEvents({ events }) {
   header.classList.add('flex', 'justify-between', 'items-center', 'w-full', 'mt-[30px]');
   btnCreateEvent.classList.add('text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
   contentEvents.classList.add('flex', 'gap-5', 'flex-wrap', 'p-5', 'justify-center', 'max-h-[500px]', 'overflow-y-auto', 'mt-10');
-  console.log(events);
 
   if (events.length === 0) {
     contentEvents.innerHTML = `

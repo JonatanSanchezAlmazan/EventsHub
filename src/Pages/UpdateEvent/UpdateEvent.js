@@ -6,22 +6,23 @@ import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import { FieldForm } from '../../Components/FieldForm/FieldForm';
+import { getEvent } from '../../Services/Event/getEvent';
 import { categories } from '../../Utils/categories';
-import { newEvent } from '../../Services/Event/newEvent';
+import { updateEvent } from '../../Services/Event/updateEvent';
 import { navigate } from '../../Utils/navigate';
 import { routes } from '../../Routes/routes';
 
-registerPlugin(FilePondPluginImagePreview, FilePondPluginFileValidateType, FilePondPluginFileValidateSize);
-
-export function NewEvent(params) {
+export async function UpdateEvent(params) {
   const main = document.querySelector('#main');
   main.innerHTML = '';
+  const id = localStorage.getItem('id');
+  const event = await getEvent({ id: id });
   const sectionNewEvent = document.createElement('section');
   const title = document.createElement('h2');
   const form = document.createElement('form');
   const titleForm = document.createElement('h3');
   const subtitleForm = document.createElement('p');
-  const titleEvent = FieldForm({ typeInput: 'text', labelText: 'Titulo del evento*', ph: 'Titulo del evento', id: 'titleEvent' });
+  const titleEvent = FieldForm({ typeInput: 'text', labelText: 'Titulo del evento', ph: `${event.title}`, id: 'titleEvent' });
   const contentDescription = document.createElement('div');
   const labelDescription = document.createElement('label');
   const description = document.createElement('textarea');
@@ -31,14 +32,14 @@ export function NewEvent(params) {
   const labelCategory = document.createElement('label');
   const date = FieldForm({ typeInput: 'date', labelText: 'Fecha*', ph: 'Seleccione la fecha', id: 'date' });
   const contentSchedule = document.createElement('div');
-  const startTime = FieldForm({ typeInput: 'time', labelText: 'Hora de inicio*', id: 'startTime' });
-  const endTime = FieldForm({ typeInput: 'time', labelText: 'Hora de finalización*', id: 'endTime' });
-  const direction = FieldForm({ typeInput: 'text', labelText: 'Dirección*', ph: 'Direccón donde será el evento', id: 'direction' });
-  const capacity = FieldForm({ typeInput: 'number', labelText: 'Número máximo de asistentes*', ph: '50', id: 'capacity' });
+  const startTime = FieldForm({ typeInput: 'time', labelText: 'Hora de inicio', id: 'startTime' });
+  const endTime = FieldForm({ typeInput: 'time', labelText: 'Hora de finalización', id: 'endTime' });
+  const direction = FieldForm({ typeInput: 'text', labelText: 'Dirección', ph: `${event.direction}`, id: 'direction' });
+  const capacity = FieldForm({ typeInput: 'number', labelText: 'Número máximo de asistentes*', ph: `${event.capacity}`, id: 'capacity' });
   const todoCategoryOption = document.createElement('option');
   const contentBtns = document.createElement('div');
   const btnCancel = document.createElement('button');
-  const btnCreate = document.createElement('button');
+  const btnUpdate = document.createElement('button');
   const changeImage = document.createElement('input');
   const contentImage = document.createElement('div');
   const img = document.createElement('img');
@@ -74,26 +75,27 @@ export function NewEvent(params) {
     'border',
     'border-[var(--e-color3)]'
   );
-  btnCreate.classList.add('text-[10px]', 'md:text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
+  btnUpdate.classList.add('text-[10px]', 'md:text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
   contentBtns.classList.add('flex', 'justify-between', 'gap-5');
 
-  title.textContent = 'Crea Nuevo Evento';
+  title.textContent = `Actualizar ${event.title}`;
   titleForm.textContent = 'Información del evento';
-  subtitleForm.textContent = 'Completa los detalles de tu evento';
-  labelCategory.textContent = 'Categoria*';
+  subtitleForm.textContent = 'Rellena los campos que quieras actualizar';
+  labelCategory.textContent = 'Categoria';
   labelDescription.textContent = 'Descripción';
-  description.placeholder = 'Descripción del evento';
-  todoCategoryOption.textContent = 'Selecciona...';
+  description.placeholder = `${event.description}`;
+  todoCategoryOption.textContent = event.category;
   btnCancel.textContent = 'Cancelar';
-  btnCreate.textContent = 'Crear Evento';
-  btnCancel.id = 'btnCancelNewEvent';
+  btnUpdate.textContent = 'Actualizar';
+  btnCancel.id = 'btnCancelUpdate';
+  img.src = event.image;
 
   sectionNewEvent.append(title, form);
   contentDescription.append(labelDescription, description);
   contentCategory.append(labelCategory, category);
   contentSchedule.append(startTime, endTime);
   contentCategoryAndDate.append(contentCategory, date);
-  contentBtns.append(btnCancel, btnCreate);
+  contentBtns.append(btnCancel, btnUpdate);
   form.append(titleForm, subtitleForm, titleEvent, contentDescription, contentCategoryAndDate, contentSchedule, direction, capacity, contentImage, contentBtns);
   category.append(todoCategoryOption);
   contentImage.append(img, changeImage);
@@ -117,10 +119,10 @@ export function NewEvent(params) {
     stylePanelLayout: 'integrated ',
     allowImagePreview: false,
     labelIdle: `
-          <span style="font-size: 12px; width:200px; cursor:pointer; color:#aaaaae ;  font-weight: bold; border:1px solid #2d2d2e; padding:5px; border-radius:5px ">
-           Insertar Imagen
-          </span>
-        `,
+            <span style="font-size: 12px; width:200px; cursor:pointer; color:#aaaaae ;  font-weight: bold; border:1px solid #2d2d2e; padding:5px; border-radius:5px ">
+             Insertar Imagen
+            </span>
+          `,
     allowDrop: true,
     dropOnPage: true,
     dropValidation: true
@@ -135,8 +137,8 @@ export function NewEvent(params) {
     }
   });
 
-  btnCreate.addEventListener('click', () => {
-    newEvent({ form, pond });
+  btnUpdate.addEventListener('click', (e) => {
+    updateEvent({ form, pond, id: event._id });
   });
 
   btnCancel.addEventListener('click', (e) => {

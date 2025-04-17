@@ -8,7 +8,7 @@
 }
 @font-face {
   font-family: 'MiFuente';
-  src: url('/fonts/Orbitron-Extrabold.woff') format('woff');
+  src: url('/fonts/Orbitron-Regular.woff') format('woff');
   font-weight: bold;
   font-style: normal;
 }
@@ -87,4 +87,27 @@ body[data-theme='light'] input:-webkit-autofill {
   margin-left: auto;
   padding-right: 20px;
   padding-left: 20px;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+body[data-theme='light']::-webkit-scrollbar-track {
+  background: #ffff;
+}
+body[data-theme='light'] ::-webkit-scrollbar-track {
+  background: #ffff;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #111d38;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #895cd6;
+  border-radius: 20px;
 }

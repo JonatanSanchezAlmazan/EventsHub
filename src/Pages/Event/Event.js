@@ -5,16 +5,9 @@ import { getEvent } from '../../Services/Event/getEvent';
 import { navigate } from '../../Utils/navigate';
 
 export async function Event() {
-  console.log('entrando');
-
   const id = localStorage.getItem('id');
-  console.log(id);
-
   const event = await getEvent({ id: id });
-  console.log(event);
-
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(user);
 
   const main = document.querySelector('#main');
   main.innerHTML = '';
@@ -31,14 +24,14 @@ export async function Event() {
   const filled = document.createElement('div');
   const btnAssist = document.createElement('button');
 
-  contentEvents.classList.add('flex', 'flex-col', 'min-w-[300px]', 'max-w-[1000px]', 'lg:max-w-[1000px]', 'w-full', 'gap-5', 'border', 'rounded-md', 'p-10', 'border-[var(--e-color3)]');
-  contentAttendees.classList.add('flex', 'flex-col', 'min-w-[300px]', 'max-w-[1000px]', 'lg:max-w-[400px]', 'w-full', 'gap-5', 'border', 'rounded-md', 'p-10', 'border-[var(--e-color3)]', 'max-h-[500px]');
+  contentEvents.classList.add('flex', 'flex-col', 'min-w-[300px]', 'max-w-[1000px]', 'lg:max-w-[1000px]', 'w-full', 'gap-5', 'border', 'rounded-md', 'p-5', 'border-[var(--e-color3)]');
+  contentAttendees.classList.add('flex', 'flex-col', 'min-w-[300px]', 'max-w-[1000px]', 'lg:max-w-[400px]', 'w-full', 'gap-5', 'border', 'rounded-md', 'p-5', 'border-[var(--e-color3)]', 'max-h-[500px]');
   contentListAttendees.classList.add('flex', 'flex-col', 'w-full', 'gap-5', 'rounded-md');
   contentAvailablePlaces.classList.add('flex', 'gap-5', 'items-center');
   content.classList.add('container', 'flex', 'justify-between', 'pt-[60px]', 'pb-[60px]', 'flex-col', 'lg:flex-row', 'gap-10');
   progressBar.classList.add('w-full', 'rounded-full', 'h-[20px]', 'border', 'border-[var(--e-color3)]');
   filled.classList.add('h-full', 'bg-[var(--e-color7)]', 'rounded-l-full');
-  listAttendees.classList.add('w-[300px]', 'h-[200px]', 'gap-5', 'flex', 'flex-col', 'border', 'border-[var(--e-color3)]', 'p-2', 'rounded-md');
+  listAttendees.classList.add('w-full', 'h-[200px]', 'gap-5', 'flex', 'flex-col', 'overflow-y-auto');
   btnAssist.classList.add('text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]', 'text-center');
 
   const places = event.capacity - event.attendees.length;
@@ -48,13 +41,13 @@ export async function Event() {
   btnAssist.textContent = 'Asistir';
 
   contentEvents.innerHTML = `
-  <button class='text-[12px] absolute top-[90px]' id="btnBack">Volver a eventos</button>
-  <div class= 'w-full'>
-    <img class='rounded-md' src='${event.image}'>
+  <button class='text-[12px] absolute top-[90px] cursor-pointer' id="btnBack">Volver a eventos</button>
+  <div class= 'w-full h-[400px]'>
+    <img class='rounded-md object-cover w-full h-full' src='${event.image}'>
   </div>
   <div class='flex w-full p-2 justify-between'>
     <h2>${event.title}</h2>
-    <p class='text-[12px] border border-[var(--e-color3)] p-1 rounded-md bg-[var(--e-color7)]'>${event.category}</p>
+    <p class='text-[12px] border border-[var(--e-color3)] p-1 rounded-md bg-[var(--e-color7)] h-[30px]'>${event.category}</p>
   </div>
   <p>Creado por ${event.idAuthor.name}</p>
   <div class='flex w-full justify-start  gap-5'>
@@ -85,8 +78,6 @@ export async function Event() {
     listAttendees.innerHTML = `<p>No hay asistentes todavía</p>`;
   } else {
     event.attendees.forEach((att) => {
-      console.log(event);
-
       const attendee = document.createElement('div');
       const imgAttendee = document.createElement('img');
       const nameAttendee = document.createElement('p');
@@ -122,8 +113,8 @@ export async function Event() {
   btnBack.addEventListener('click', (e) => {
     navigate({ event: e, route: routes[0] });
   });
-  btnAssist.addEventListener('click', async () => {
-    await toogleAttendee({ userId: user._id, eventId: event._id, btn: btnBack });
+  btnAssist.addEventListener('click', async (e) => {
+    await toogleAttendee({ userId: user._id, eventId: event._id, event: e });
   });
 
   const percentage = (event.attendees.length / event.capacity) * 100;
