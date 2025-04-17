@@ -113,7 +113,7 @@ export function NewEvent(params) {
 
   const pond = FilePond.create(changeImage, {
     acceptedFileTypes: ['image/png', 'image/jpeg', 'image/jpg', 'image/webp'],
-    maxFileSize: '2MB',
+    maxFileSize: '5MB',
     stylePanelLayout: 'integrated ',
     allowImagePreview: false,
     labelIdle: `
