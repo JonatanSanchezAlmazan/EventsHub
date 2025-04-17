@@ -38,7 +38,7 @@ export function ProfileCardUpdate({ user, content }) {
   contentDescription.classList.add('flex', 'flex-col', 'gap-1', 'relative');
   labelDescription.classList.add('text-sm');
   containerButtons.classList.add('w-full', 'flex', 'justify-between');
-  btnSave.classList.add('text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'hidden', 'md:flex', 'transition-colors', 'hover:bg-[var(--e-color8)]');
+  btnSave.classList.add('text-[12px]', 'bg-[var(--e-color7)]', 'px-8', 'py-2', 'text-[#000]', 'rounded-md', 'cursor-pointer', 'transition-colors', 'hover:bg-[var(--e-color8)]');
   btnCancel.classList.add(
     'md:text-[12px]',
     'text-[10px]',
