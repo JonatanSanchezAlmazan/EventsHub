@@ -10,6 +10,8 @@ app.innerHTML = `
 `;
 Header();
 Home();
+localStorage.removeItem('id');
+localStorage.removeItem('user');
 
 const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 
