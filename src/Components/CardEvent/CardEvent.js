@@ -20,7 +20,7 @@ export function CardEvent({ event, isAdmin = false, parentelement, isEvent = fal
   const btnRemove = document.createElement('button');
 
   if (isAdmin) {
-    card.classList.add('h-[500px]');
+    card.classList.add('h-[550px]');
   }
   card.classList.add('min-w-[300px]', 'max-w-[380px]', 'h-[450px]', 'w-full', 'border', 'p-5', 'border-[var(--e-color3)]', 'rounded-md', 'flex', 'flex-col', 'gap-5', 'justify-between');
   name.classList.add('text-[14px]', 'font-bold', 'max-w-[250px]');
